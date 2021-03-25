@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Coba extends CI_Controller {
+class Beranda extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -20,6 +20,6 @@ class Coba extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('coba_view');
+		$this->load->view('beranda_view');
 	}
 }
