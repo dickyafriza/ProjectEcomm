@@ -133,3 +133,6 @@ $autoload['language'] = array();
 |	$autoload['model'] = array('first_model' => 'first');
 */
 $autoload['model'] = array();
+$autoload['libraries'] = 
+array('form_validation','session','database','simple_login');
+$autoload['helper']=array('url','file','form','html');
