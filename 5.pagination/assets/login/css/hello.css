@@ -1,0 +1,14 @@
+  body {
+    /* background-color: rgba(rgb(130, 14, 14), rgb(68, 4, 23), rgb(72, 11, 11), alpha); */
+    background: tomato;
+    padding: 20px;
+
+  }
+  h1 {
+    font-size: 50px;
+    margin: auto;
+    text-align: center;
+    color: tomato;
+    -webkit-text-stroke: 0.05em rgb(4, 24, 84);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
