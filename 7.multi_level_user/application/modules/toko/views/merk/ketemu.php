@@ -37,8 +37,8 @@
           <span class="badge badge-pill badge-success mb-2">Rp. <?php echo number_format($prd->harga,0,',','.')?> </span>
  
           
-          <?php echo anchor('dashboard/tambah_keranjang/'.$prd->id_brg,'<div class="btn btn-sm btn-primary">Tambah ke Keranjang</div>')?>
-          <?php echo anchor('dashboard/detail/'.$prd->id_brg,'<div class="btn btn-sm btn-success">Detail</div>')?>
+          <?php echo anchor('toko/dashboard/tambah_keranjang/'.$prd->id_brg,'<div class="btn btn-sm btn-primary">Tambah ke Keranjang</div>')?>
+          <?php echo anchor('toko/dashboard/detail/'.$prd->id_brg,'<div class="btn btn-sm btn-success">Detail</div>')?>
         </div>
       </div>
     <?php endforeach; ?>

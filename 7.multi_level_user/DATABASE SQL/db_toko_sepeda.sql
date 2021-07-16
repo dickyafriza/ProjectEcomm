@@ -16,29 +16,6 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`db_toko_sepeda` /*!40100 DEFAULT CHARAC
 
 USE `db_toko_sepeda`;
 
-/*Table structure for table `produk_hapus` */
-
-DROP TABLE IF EXISTS `produk_hapus`;
-
-CREATE TABLE `produk_hapus` (
-  `id_brg` int(11) NOT NULL AUTO_INCREMENT,
-  `nm_brg` varchar(150) NOT NULL,
-  `merk` varchar(20) NOT NULL,
-  `stok` int(11) NOT NULL,
-  `harga` int(11) NOT NULL,
-  `gambar` varchar(200) NOT NULL,
-  `tgl_hapus` date DEFAULT NULL,
-  `nama_user` varchar(30) DEFAULT NULL,
-  PRIMARY KEY (`id_brg`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4;
-
-/*Data for the table `produk_hapus` */
-
-insert  into `produk_hapus`(`id_brg`,`nm_brg`,`merk`,`stok`,`harga`,`gambar`,`tgl_hapus`,`nama_user`) values 
-(21,'Sepeda United Kuning','sepeda',20,5500000,'united1.jpg','2021-07-07','root@localhost'),
-(22,'Sepeda Lipat Pacific','sepeda',15,7000000,'Sepeda-Lipat-Pacific-Splendid-','2021-06-29','root@localhost'),
-(23,'Sepeda wim cycle','sepeda',30,4000000,'','2021-06-29','root@localhost');
-
 /*Table structure for table `tb_brg` */
 
 DROP TABLE IF EXISTS `tb_brg`;
@@ -77,7 +54,8 @@ insert  into `tb_brg`(`id_brg`,`nm_brg`,`merk`,`stok`,`harga`,`gambar`) values
 (17,'Sepeda Polygon Putih','sepeda',15,6500000,'1952162762p.jpg'),
 (18,'Sepeda Ontel 1990','sepeda',20,10000000,'onthel1.jpg'),
 (19,'Sepeda Ontel 1991','sepeda',20,11000000,'screen-shot-2016-10-24-at-7-08-09-pm1.png'),
-(20,'Sepeda Ontel 1992','sepeda',20,12000000,'Sepeda-Onthel-Modern.jpg');
+(20,'Sepeda Ontel 1992','sepeda',20,12000000,'Sepeda-Onthel-Modern.jpg'),
+(21,'Sepeda Lipat Pacific Kuning','sepeda',10,2000000,'Sepeda-Lipat-Pacific-Splendid-11.jpg');
 
 /*Table structure for table `tb_jual` */
 
@@ -89,15 +67,17 @@ CREATE TABLE `tb_jual` (
   `alamat` varchar(250) NOT NULL,
   `tgl_pesan` datetime NOT NULL,
   `batas_bayar` datetime NOT NULL,
-  PRIMARY KEY (`id`),
-  CONSTRAINT `tb_jual_ibfk_1` FOREIGN KEY (`id`) REFERENCES `tb_user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `tb_jual` */
 
 insert  into `tb_jual`(`id`,`nama`,`alamat`,`tgl_pesan`,`batas_bayar`) values 
 (1,'Mang Oleh','Cibaduyut','2021-04-22 12:53:57','2021-04-23 12:53:57'),
-(2,'Muhammad Dicky Afriza','Pegandon Kendal','2021-04-22 15:55:20','2021-04-23 15:55:20');
+(2,'Muhammad Dicky Afriza','Pegandon Kendal','2021-04-22 15:55:20','2021-04-23 15:55:20'),
+(13,'Muhammad Dicky','Kendal','2021-07-08 15:51:15','2021-07-09 15:51:15'),
+(14,'afriza','Patebon','2021-07-13 20:36:08','2021-07-14 20:36:08'),
+(15,'bhakti','bhakti raharjo','2021-07-13 22:00:28','2021-07-14 22:00:28');
 
 /*Table structure for table `tb_pesanan` */
 
@@ -117,14 +97,22 @@ CREATE TABLE `tb_pesanan` (
   KEY `id_jual` (`id_jual`),
   KEY `harga` (`harga`),
   KEY `jumlah` (`jumlah`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `tb_pesanan` */
 
 insert  into `tb_pesanan`(`id`,`id_jual`,`id_brg`,`nm_brg`,`jumlah`,`harga`,`pilihan`) values 
 (19,1,20,'Sepeda United Merah',1,3000000,''),
 (20,2,5,'Kacamata Rockbros Hitam',1,200000,''),
-(21,11,1,'Helmet Bikeboy Ultra Light',1,350000,'');
+(21,11,1,'Helmet Bikeboy Ultra Light',1,350000,''),
+(22,13,9,'Handlebar Taya',1,600000,''),
+(23,14,15,'Sepeda Polygon Hijau',1,4000000,''),
+(24,14,7,'Handlebar Pura Raza',1,800000,''),
+(25,14,8,'Lampu Sepeda FL 900',1,400000,''),
+(26,15,14,'Sepeda United Merah',4,4000000,''),
+(27,15,2,'Helmet Red',1,200000,''),
+(28,15,15,'Sepeda Polygon Hijau',1,4000000,''),
+(29,15,1,'Helmet Bikeboy Ultra Light',4,350000,'');
 
 /*Table structure for table `tb_user` */
 
@@ -138,45 +126,15 @@ CREATE TABLE `tb_user` (
   `role_id` tinyint(1) NOT NULL,
   KEY `role_id` (`role_id`),
   KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `tb_user` */
 
 insert  into `tb_user`(`id`,`nama`,`username`,`password`,`role_id`) values 
 (1,'admin','admin','admin',1),
-(2,'afriza','dicky','dicky',2);
-
-/* Trigger structure for table `tb_brg` */
-
-DELIMITER $$
-
-/*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `hapus_barang` */$$
-
-/*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `hapus_barang` AFTER DELETE ON `tb_brg` FOR EACH ROW BEGIN
- INSERT INTO produk_hapus
- 	( id_brg, 
-     nm_brg, 
-     merk, 
-     stok, 
-     harga, 
-     gambar, 
-     tgl_hapus, 
-     nama_user 
-    )
-    VALUES
-    ( OLD.id_brg, 
-     OLD.nm_brg, 
-     OLD.merk, 
-     OLD.stok, 
-     OLD.harga, 
-     OLD.gambar, 
-     SYSDATE(), 
-    CURRENT_USER 
-    );
-    END */$$
-
-
-DELIMITER ;
+(2,'afriza','dicky','dicky',2),
+(3,'Afriza','afriza','123',2),
+(4,'Afriza','afriza','123',2);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

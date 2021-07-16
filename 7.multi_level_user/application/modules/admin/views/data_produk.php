@@ -1,5 +1,7 @@
 <div class="container-fluid">
     <button class="btn btn-sm btn-primary mb-3" data-toggle="modal" data-target="#tambah_produk"><i class="fas fa-plus fa-sm"></i> Tambah Barang</button>
+     <button class="btn btn-sm btn-success mb-3" data-toggle="modal" ><a href="<?php echo base_url('admin/data_produk/Data_Barang') ?>"> Laporan Data Barang </a> </button>
+    
     <table class="table table-bordered">
         <tr>
             <th>No</th>

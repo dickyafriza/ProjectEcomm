@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <h4>Data Pemesanan Produk</h4>
-   
+   <button class="btn btn-sm btn-success mb-3" data-toggle="modal" ><a href="<?php echo base_url('admin/jual/Data_Jual') ?>"> Laporan Data Jual </a> </button>
     <table class="table table-bordered table-striped table-hover">
         <tr>
             <th>Id Rekap</th>

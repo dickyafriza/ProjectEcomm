@@ -79,7 +79,7 @@
           </button>
 
           <!-- Topbar Search -->
-          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" method="post" action="<?php echo base_url('merk/cari') ?>">
+          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" method="post" action="<?php echo base_url('toko/merk/cari') ?>">
             <div class="input-group">
               <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" name="cari">
               <div class="input-group-append">
@@ -115,10 +115,10 @@
                   <li>
                   <i class="fas fa-user"></i>
                   <?php echo $this->session->userdata('username') ?> </li>
-                  <li class="ml-2"><?php echo anchor('toko/auth/logout',' Logout'); ?></li>
+                  <li class="ml-2"><?php echo anchor('auth/auth/logout',' Logout'); ?></li>
                   
                   <?php } else {?>
-                  <li><?php echo anchor('toko/auth/login',' Login'); ?></li>
+                  <li><?php echo anchor('auth/auth/login',' Login'); ?></li>
                   <?php } ?>
                 </ul>
             </div>

@@ -12,7 +12,7 @@
               <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4">Daftar Akun</h1>
               </div>
-              <form class="user" method="post" action="<?php echo base_url('registrasi/index');?>">
+              <form class="user" method="post" action="<?php echo base_url('auth/registrasi/index');?>">
               <div class="form-group">
                   <input type="text" class="form-control form-control-user" id="exampleInputEmail" placeholder="Masukkan Nama Anda" name="nama">
                   <?php echo form_error('nama','<div class="text-danger small ml-2">','</div>');?>
@@ -30,14 +30,13 @@
                     <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Ulangi Password" name="password_2">
                   </div>
                 </div>
-                <button type="submit" class="btn btn-secondary btn-user btn-block">Daftar</button>
-               
+                <button type="submit" class="btn btn-primary btn-user btn-block">Daftar</button>
+
                
               </form>
               <hr>
-           
               <div class="text-center">
-                <a class="small" href="<?php echo base_url('toko/auth/login');?>">Sudah Punya Akun? Login!</a>
+                <a class="small" href="<?php echo base_url('auth/auth/login');?>">Sudah Punya Akun? Login!</a>
               </div>
             </div>
           </div>

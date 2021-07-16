@@ -19,7 +19,7 @@
                   </div>
                   <?php echo $this->session->flashdata('pesan') ?>
                   
-                  <form class="user" method="post" action="<?php echo base_url('toko/auth/login');?>">
+                  <form class="user" method="post" action="<?php echo base_url('auth/auth/login');?>">
                     <div class="form-group">
                       <input type="text" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." name="username">
                     </div>
@@ -27,14 +27,14 @@
                       <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password" name="password">
                     </div>
                    
-                    <button type="submit" class="btn btn-secondary form-control">Login</button>
+                    <button type="submit" class="btn btn-primary form-control">Login</button>
                     <hr>
                     
                   </form>
                   <hr>
                 
                   <div class="text-center">
-                    <a class="small" href="<?php echo base_url('toko/registrasi/index');?>">Belum Punya Akun? Daftar</a>
+                    <a class="small" href="<?php echo base_url('auth/registrasi/index');?>">Belum Punya Akun? Daftar</a>
                   </div>
                 </div>
               </div>

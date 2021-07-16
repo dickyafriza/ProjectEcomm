@@ -40,7 +40,7 @@
          
  
           
-          <?php echo anchor('toko/dashboard/tambah_keranjang_sepeda/'.$prd->id_brg,'<div class="btn btn-sm btn-primary">Tambah ke Keranjang</div>')?>
+          <?php echo anchor('toko/dashboard/tambah_keranjang/'.$prd->id_brg,'<div class="btn btn-sm btn-primary">Tambah ke Keranjang</div>')?>
           <?php echo anchor('toko/dashboard/detail/'.$prd->id_brg,'<div class="btn btn-sm btn-success">Detail</div>')?>
         </div>
       </div>
